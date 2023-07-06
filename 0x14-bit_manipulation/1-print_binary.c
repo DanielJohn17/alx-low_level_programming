@@ -16,15 +16,16 @@ void print_binary(unsigned long int n)
 		_putchar('0');
 	}
 
-	while (n > 0)
+	while ((1 << i) <= n)
 	{
-		binary_arr[i] = n % 2;
-		n = n / 2;
 		i++;
 	}
 
 	for (j = i - 1; j >= 0; j--)
 	{
-		_putchar(binary_arr[j] + '0');
+		unsigned long int bit = (n & (1 << j)) ? 1 : 0;
+
+		_putchar(bit + '0');
 	}
 }
+
