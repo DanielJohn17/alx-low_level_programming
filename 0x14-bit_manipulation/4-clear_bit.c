@@ -6,19 +6,18 @@
  * @n: pointer of an unsigned long int.
  * @index: index of the bit.
  *
- * Return: 1 if it worked, -1 if it didn't.
+ * Return: 0 if it worked, -1 if it didn't.
  */
+
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned int m;
+	unsigned long int change;
 
-	if (index > 63)
+	if (index >= 64)
 		return (-1);
 
-	m = 1 << index;
-
-	if (*n & m)
-		*n ^= m;
+	change = ~(1 << index);
+	*n = (*n & change);
 
 	return (1);
 }
